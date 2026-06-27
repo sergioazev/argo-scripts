@@ -1,0 +1,13 @@
+services:
+  argo:
+    build: .
+    container_name: argo-organizador-ugos
+    ports:
+      - "8787:8787"
+    volumes:
+      - /volume1/Projetos:/projects
+      - /volume1/ArgoData:/data
+    environment:
+      - ARGO_PROJECTS_ROOT=/projects
+      - ARGO_DATA_ROOT=/data
+    restart: unless-stopped

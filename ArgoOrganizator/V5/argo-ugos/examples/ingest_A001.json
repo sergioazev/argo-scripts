@@ -1,0 +1,12 @@
+{
+  "project_title": "O Cabra Marcado Para Morrer",
+  "source_path": "/projects/_INBOX/A001",
+  "project_root": "/projects/cabra",
+  "reel": "A001",
+  "template": "Base_Editorial",
+  "clone_card": true,
+  "rename": true,
+  "avid_package": true,
+  "avid_profile": "FAST_AMA",
+  "material_mode": "copy"
+}

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Argo Organizador</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <h1>Argo Organizador</h1>
+        <p>macOS · templates · estruturas · rename · rollback</p>
+      </div>
+    </header>
+
+    <section class="grid">
+      <section class="card">
+        <h2>1. Projeto</h2>
+
+        <label>Título</label>
+        <input id="title" value="O Cabra Marcado Para Morrer" />
+
+        <label>Pasta raiz de destino</label>
+        <div class="row">
+          <input id="root" />
+          <button id="chooseRoot">Escolher...</button>
+        </div>
+
+        <label>Data YYYYMMDD</label>
+        <input id="date" />
+
+        <label>Modo de estrutura</label>
+        <select id="mode">
+          <option value="template">Template predefinido</option>
+          <option value="copy">Copiar estrutura existente</option>
+          <option value="manual">Criar estrutura manual</option>
+        </select>
+
+        <label>Template</label>
+        <select id="template"></select>
+
+        <label>Pasta modelo</label>
+        <div class="row">
+          <input id="sourceRoot" placeholder="/Volumes/Projeto_Modelo" />
+          <button id="chooseSource">Escolher...</button>
+        </div>
+
+        <label>Estrutura manual</label>
+        <textarea id="manual">00_ADMIN
+01_BRUTOS
+01_BRUTOS/CAMERA_A
+01_BRUTOS/CAMERA_B
+02_AUDIO
+03_PROXIES
+04_SYNC
+05_TIMELINES
+06_EXPORTS
+07_MASTER
+08_QC
+09_ARCHIVE</textarea>
+
+        <div class="actions">
+          <button id="previewStructure">Preview estrutura</button>
+          <button id="applyStructure" class="primary">Aplicar estrutura</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>2. Renomear arquivos físicos</h2>
+
+        <label>Pasta com arquivos</label>
+        <div class="row">
+          <input id="renameFolder" />
+          <button id="chooseRenameFolder">Escolher...</button>
+        </div>
+
+        <label>Regra de renomeação</label>
+        <select id="renameMode">
+          <option value="addBefore">Add Before Name</option>
+          <option value="addAfter">Add After Name</option>
+          <option value="findReplace">Find and Replace</option>
+          <option value="sequence">Sequence</option>
+          <option value="slugSequence">Project Slug + Sequence</option>
+          <option value="replaceAll">Replace Full Name</option>
+        </select>
+
+        <label>Texto para adicionar / prefixo</label>
+        <input id="addText" placeholder="ex: cabra_" />
+
+        <label>Find</label>
+        <input id="findText" placeholder="texto existente" />
+
+        <label>Replace</label>
+        <input id="replaceText" placeholder="novo texto" />
+
+        <label>Replace full name</label>
+        <input id="replaceFullName" placeholder="novo_nome_base" />
+
+        <div class="row">
+          <div>
+            <label>Sequence prefix</label>
+            <input id="sequencePrefix" value="clip" />
+          </div>
+          <div>
+            <label>Start</label>
+            <input id="sequenceStart" value="1" />
+          </div>
+          <div>
+            <label>Digits</label>
+            <input id="sequenceDigits" value="3" />
+          </div>
+        </div>
+
+        <label class="check">
+          <input id="lowercase" type="checkbox" checked />
+          Converter para minúsculas
+        </label>
+
+        <label class="check">
+          <input id="keepExtension" type="checkbox" checked />
+          Manter extensão
+        </label>
+
+        <label class="check">
+          <input id="includeAllFiles" type="checkbox" />
+          Incluir todos os arquivos
+        </label>
+
+        <label class="check">
+          <input id="useFfprobe" type="checkbox" />
+          Ler metadata via ffprobe, se instalado
+        </label>
+
+        <div class="actions">
+          <button id="previewRename">Preview rename</button>
+          <button id="applyRename" class="danger">Aplicar rename</button>
+        </div>
+
+        <h2>3. Rollback</h2>
+        <label>Arquivo .argo_rollback_*.json</label>
+        <div class="row">
+          <input id="rollbackFile" />
+          <button id="chooseRollback">Escolher...</button>
+        </div>
+
+        <button id="rollback" class="secondary">Executar rollback</button>
+      </section>
+    </section>
+
+    <section class="card logcard">
+      <h2>Log / Preview</h2>
+      <div id="log">Pronto.</div>
+    </section>
+  </main>
+
+  <script src="./renderer.js"></script>
+</body>
+</html>
